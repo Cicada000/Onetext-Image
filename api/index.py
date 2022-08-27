@@ -8,9 +8,7 @@ app = Flask(__name__)
 @app.route('/api')
 
 def build():
-    return  render_template("index.html" , image_base64 = image_base64)
-
-
+    
     url = requests.get("https://onetext.cicada000.work/api")
     OneText = json.loads(url.text)
     Text = OneText['text']
@@ -52,3 +50,5 @@ def build():
         return base64_str
 
     image_base64 = image_to_base64(Background).decode('UTF-8')
+
+    return  render_template("index.html" , image_base64 = image_base64)
