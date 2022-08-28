@@ -6,7 +6,7 @@ import base64 , json , requests
 
 app = Flask(__name__)
 
-@app.route('/api')
+@app.route('/')
 
 def build():
 
