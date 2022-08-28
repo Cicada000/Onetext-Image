@@ -40,7 +40,7 @@ def build():
     ImageDraw.Draw(Background).text((220 , 200) , Text , font=ImageFont.truetype("api/LXGWWenKaiGBFusion-Bold.ttf", 70, encoding="unic") , spacing=20 , fill=(0 , 0 , 0))
     ImageDraw.Draw(Background).text((TextLenth - 180 , 70 + (Row + 2)*70) , "”" , font=ImageFont.truetype("api/LXGWWenKaiGBFusion-Bold.ttf", 300, encoding="unic") , fill=(180 , 180 , 180))
     ImageDraw.Draw(Background).text((TextLenth - 180 , TextHeight - 230) , "——" + Author , font=ImageFont.truetype("api/LXGWWenKaiGBFusion-Bold.ttf", 50, encoding="unic") , anchor="rd" , fill=(50 , 50 , 50))
-    ImageDraw.Draw(Background).text((TextLenth - 180 , TextHeight - 160) , Time + From , font=ImageFont.truetype("api/LXGWWenKaiGBFusion-Bold.ttf", 30, encoding="unic") , anchor="rd" , fill=(30 , 30 , 30))
+    ImageDraw.Draw(Background).text((TextLenth - 180 , TextHeight - 160) , Time + "·" + From , font=ImageFont.truetype("api/LXGWWenKaiGBFusion-Bold.ttf", 30, encoding="unic") , anchor="rd" , fill=(30 , 30 , 30))
     ImageDraw.Draw(Background).rounded_rectangle((40 , 40 , TextLenth - 40 , TextHeight - 40) , 15 , width = 5 , outline=(227 , 227 , 227))
 
     # 图片转base64
