@@ -3,6 +3,12 @@ from flask import Flask , render_template
 from io import BytesIO
 import base64 , json , requests
 
+def select(a):
+    list = ["ACGN","POEM","OTHER","LYRICS"]
+    if str.upper(str(a)) in list :
+        return str.upper(str(a))
+    else :
+        return random.choice(list)
 
 app = Flask(__name__)
 
@@ -10,8 +16,33 @@ app = Flask(__name__)
 
 def build():
 
-    url = requests.get("https://onetext.cicada000.work/api")
-    OneText = json.loads(url.text)
+    category = request.args.get("category")
+    id = request.args.get("id")
+    number = -1
+
+    if id != None :
+        id = id.split("-")
+        category = id[0]
+        id += '0'
+        number = int(id[1])-1
+    
+    if category == None :
+        category =  select(category)
+    else :
+        category = category.split()
+        category = random.choice(category)
+        category = select(category)
+
+    url = requests.get("https://onetext.cicada000.work/" + category + ".json")
+    OneTextRaw = json.loads(url.text)
+
+    if number == -1:
+        number = random.randint(0,(len(OneTextRaw) - 1))
+    else :
+        number = number
+
+    OneText = OneTextRaw[number]
+
     Text = OneText['text']
     Time = OneText['time']
     Author = OneText['by']
