@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 def build():
 
-    url = requests.get("https://onetext.cicada000.work/api")
+    url = requests.get("https://onetext.cicada000.work")
     OneText = json.loads(url.text)
     Text = OneText['text']
     Time = OneText['time']
